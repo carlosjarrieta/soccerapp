@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  horario_cancha: one
+  status: false
+
+two:
+  user: two
+  horario_cancha: two
+  status: false

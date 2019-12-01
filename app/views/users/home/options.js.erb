@@ -1,0 +1,7 @@
+var html = "<%= j(collection_select(:ciudad, :id, @ciudades, :id, :name, {:prompt=>true, require: true}, {:class=>'mdl-textfield__input'})) %>";
+var label_ciudades = '<p>Ciudades:</p>'
+$('#ciudades').html(label_ciudades).append(html).fadeIn(500);
+
+//
+// var html = "<%= j(collection_select(:ciudad, :id, @ciudades, :id, :name)) %>";
+// $('#activities').html(html).fadeIn(500);

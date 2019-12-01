@@ -1,0 +1,109 @@
+<div class="mdl-card mdl-shadow--2dp employer-form" action="#">
+  <div class="mdl-card__title">
+    <h2><%= title %> </h2>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+    <%= form_with(model: cancha, local: true, id:'form') do |form| %>
+    <% if defined?(comercio) %>
+      <input type="hidden" name="comercio_id" value=<%= comercio.id %> />
+    <% end %>
+    <% if cancha.errors.any? %>
+    <div class="mdl-color-text--red">
+
+      <ul>
+        <% cancha.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="form__article">
+      <h3>Datos Básicos</h3>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= form.text_field :nombre, class: "mdl-textfield__input", required: true %>
+          <label class="mdl-textfield__label" for="cancha_nombre">Nombre:</label>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= form.number_field :precio, class: "mdl-textfield__input", required: true %>
+          <label class="mdl-textfield__label" for="cancha_direccion">Precio:</label>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= form.text_field :ciudad, class: "mdl-textfield__input", readonly: true %>
+          <label class="mdl-textfield__label" for="cancha_nombre">Ciudad:</label>
+        </div>
+        <div>
+           <%= form.label :foto %>
+           <%= form.file_field :foto %>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <%= form_tag admin_select_dpto_path, method: :post, remote: true  do |f|%>
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <p>Departamento:</p>
+          <%=  collection_select(:departamento, :id, Departamento.order(:name), :id, :name, {:prompt=>true, require: true}, {:class=>'mdl-textfield__input'}) %>
+        </div>
+
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <div id="ciudades">
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form__article employer-form__general_skills">
+          <h3>Descripción de la cancha</h3>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <%= form.text_area :descripcion, class: "mdl-textfield__input", required: true%>
+              <label class="mdl-textfield__label" for="cancha_descripcion">Detalle</label>
+          </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="form__action">
+      <button id="cmd_guardar" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Guardar
+      </button>
+      <%= link_to :back, title:'Regresar', class:"mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-js-ripple-effect button--colored-purple" do %>
+      <i class="material-icons">reply</i>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+
+
+<script type="text/javascript" >
+  $(document).ready(function () {
+    var cmd_guardar = $("#cmd_guardar");
+    var combo = $('#departamento_id');
+
+    combo.on('change', function () {
+
+      if ($(this).val() == '') {
+        cmd_guardar.attr("disabled", true);
+        $("#ciudades").hide(350);
+      } else {
+        $.ajax({
+          url: "<%= admin_select_dpto_path %>",
+          type: "POST",
+          data: {
+            departamento_id: $(this).val()
+          }
+        });
+
+      }
+
+    });
+  });
+</script>
+</div>

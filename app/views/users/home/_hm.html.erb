@@ -1,0 +1,23 @@
+<!-- HORARIO MAÑANA -->
+<ul class="mdl-list pull-left">
+  <li class="mdl-list__item">
+    <span class="text-color--gray">MAÑANA</span>
+  </li>
+
+  <% @horario_manana.each do |hm| %>
+  <li class="mdl-list__item">
+    <%= form_tag reservar_path, remote: true, method: :post do %>
+    <input type="hidden" name="id" value=<%= @cancha.id %> >
+    <input type="hidden" name="horario_id" value=<%= hm.id %>>
+
+
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-light-blue "
+      onclick="return confirm('Quiere reservar esta cancha？')"
+        <%= disabled_item(hm.reservado?) %>>
+        <i class="material-icons">create</i>
+        <%= hm.hora %>
+      </button>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

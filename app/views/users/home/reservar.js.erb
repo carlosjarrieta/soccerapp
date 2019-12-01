@@ -1,0 +1,10 @@
+var hm = "<%= j( render 'hm') %>";
+$('#horario_hm').html(hm).fadeIn(500);
+
+var ht = "<%= j( render 'ht') %>";
+$('#horario_ht').html(ht).fadeIn(500);
+
+var hn = "<%= j( render 'hn') %>";
+$('#horario_hn').html(hn).fadeIn(500);
+
+toastr.success('Cancha reservada correctamente!', 'Éxito')

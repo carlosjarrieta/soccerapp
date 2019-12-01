@@ -1,0 +1,289 @@
+
+
+<!-- LAYOUT PARA LOS USUARIOS -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= favicon_link_tag asset_path('DB_16х16.png') %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Canchas de Futball" content="Encuentra y reserva las canchas de Futball.">
+    <!-- Lighthouse Details -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#C50001"/>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!-- <link rel="canonical" href="http://www.example.com/"> -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- inject:css -->
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!-- endinject -->
+
+    <%= javascript_include_tag 'application' %>
+    <title>SOCCER BOARD -
+      <% if content_for?(:title) %>
+        <%= yield(:title) %>
+      <% end %>
+    </title>
+
+  </head>
+  <body>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <div class="mdl-layout-spacer"></div>
+          <!-- Search-->
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search"/>
+              <label class="mdl-textfield__label" for="search">Buscar por nombre</label>
+            </div>
+          </div>
+
+          <div class="material-icons mdl-badge mdl-badge--overlap mdl-button--icon notification" id="notification" data-badge="23">
+            notifications_none
+          </div>
+          <!-- Notifications dropdown-->
+          <ul class="mdl-menu mdl-list mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-shadow--2dp notifications-dropdown" for="notification">
+
+            <li class="mdl-menu__item mdl-list__item list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--primary">
+                  <i class="material-icons">plus_one</i>
+                </span>
+                <span>You have 3 new orders.</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label">just now</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--secondary">
+                  <i class="material-icons">error_outline</i>
+                </span>
+                <span>Database error</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label">1 min</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--primary">
+                  <i class="material-icons">new_releases</i>
+                </span>
+                <span>The Death Star is built!</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label">2 hours</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--primary">
+                  <i class="material-icons">mail_outline</i>
+                </span>
+                <span>You have 4 new mails.</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label">5 days</span>
+              </span>
+            </li>
+            <li class="mdl-list__item list__item--border-top">
+              <button href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">ALL NOTIFICATIONS</button>
+            </li>
+          </ul>
+
+          <div class="material-icons mdl-badge mdl-badge--overlap mdl-button--icon message" id="inbox" data-badge="4">
+            mail_outline
+          </div>
+          <!-- Messages dropdown-->
+          <ul class="mdl-menu mdl-list mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-shadow--2dp messages-dropdown" for="inbox">
+            <li class="mdl-list__item">
+              You have 4 new messages!
+            </li>
+            <li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--primary">
+                  <text>A</text>
+                </span>
+                <span>Alice</span>
+                <span class="mdl-list__item-sub-title">Birthday Party</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label label--transparent">just now</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--baby-blue">
+                  <text>M</text>
+                </span>
+                <span>Mike</span>
+                <span class="mdl-list__item-sub-title">No theme</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label label--transparent">5 min</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--cerulean">
+                  <text>D</text>
+                </span>
+                <span>Darth</span>
+                <span class="mdl-list__item-sub-title">Suggestion</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label label--transparent">23 hours</span>
+              </span>
+            </li>
+            <li class="mdl-menu__item mdl-list__item mdl-list__item--two-line list__item--border-top">
+              <span class="mdl-list__item-primary-content">
+                <span class="mdl-list__item-avatar background-color--mint">
+                  <text>D</text>
+                </span>
+                <span>Don McDuket</span>
+                <span class="mdl-list__item-sub-title">NEWS</span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label label--transparent">30 Nov</span>
+              </span>
+            </li>
+            <li class="mdl-list__item list__item--border-top">
+              <button href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">SHOW ALL MESSAGES</button>
+            </li>
+          </ul>
+
+          <% if !user_signed_in? %>
+            <%= link_to 'Login', new_user_session_path, class: "mdl-button mdl-js-button mdl-button--raised color--light-blue" %>
+          <% else %>
+            <div class="avatar-dropdown" id="icon">
+
+              <%= image_tag('Icon_header.png') %>
+            </div>
+
+          <% end %>
+
+          <!-- Account dropdawn-->
+          <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown" for="icon">
+            <li class="mdl-list__item mdl-list__item--two-line">
+              <% if user_signed_in? %>
+                <span class="mdl-list__item-primary-content"></span>
+                <span><%= current_user.name %></span>
+                <span class="mdl-list__item-sub-title"><%= current_user.email %></span>
+              <% end %>
+            </li>
+            <li class="list__item--border-top"></li>
+            <li class="mdl-menu__item mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">account_circle</i>
+                Mi Cuenta
+              </span>
+            </li>
+
+            <%= link_to users_reservas_path do %>
+            <li class="mdl-menu__item mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">check_box</i>
+                Mis Reservas
+              </span>
+              <span class="mdl-list__item-secondary-content">
+                <span class="label background-color--primary">3 new</span>
+              </span>
+            </li>
+            <% end %>
+
+            <li class="list__item--border-top"></li>
+
+
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <li class="mdl-menu__item mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+                Log out
+              </span>
+            </li>
+          <% end %>
+        </ul>
+
+        <button id="more" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">more_vert</i>
+        </button>
+
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp settings-dropdown" for="more">
+          <li class="mdl-menu__item">
+            <%= link_to "Administrador", new_admin_session_path %>
+          </li>
+
+        </ul>
+      </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+      <header>darkboard</header>
+      <div class="scroll__wrapper" id="scroll__wrapper">
+        <div class="scroller" id="scroller">
+          <div class="scroll__container" id="scroll__container">
+            <nav class="mdl-navigation">
+              <a class="mdl-navigation__link mdl-navigation__link--current" href="/">
+                <i class="material-icons" role="presentation">search</i>
+                Canchas
+              </a>
+              <%= link_to acount_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons" role="presentation">account_circle</i>
+              Mi cuenta
+            <% end %>
+
+            <div class="mdl-layout-spacer"></div>
+
+          </nav>
+        </div>
+      </div>
+      <div class='scroller__bar' id="scroller__bar"></div>
+    </div>
+  </div>
+
+  <main class="mdl-layout__content">
+
+    <% flash.each do |key, value| %>
+      <div class="alert <%= flash_class(key) %>" role="alert">
+        <button type="button" class="close-alert">×</button>
+        <i class="material-icons">info</i>
+          <%= value %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </main>
+
+</div>
+<%= render 'partials/scripts' %>
+</body>
+</html>

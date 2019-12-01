@@ -1,0 +1,53 @@
+
+<%= content_for :title do %>
+Canchas de Futball
+<% end %>
+
+<div id="canchas_list">
+  <%= render 'tabla_canchas',  collection: @canchas%>
+</div>
+
+
+
+
+<script type="text/javascript" >
+  $(document).ready(function () {
+    var txt_buscar = $("#search");
+    txt_buscar.keyup(function() {
+      $.ajax({
+        url: "<%= buscar_path %>",
+        type: "POST",
+        data: {
+          query: $(this).val()
+        }
+      });
+    });
+
+  });
+
+</script>
+<!-- <script type="text/javascript" >
+  $(document).ready(function () {
+    $("#btn_filtrar").attr("disabled", true);
+    var combo = $('#departamento_id');
+
+    combo.on('change', function () {
+
+      if ($(this).val() == '') {
+        $("#btn_filtrar").attr("disabled", true);
+        $("#ciudad_name").hide(350);
+      } else {
+        $("#btn_filtrar").attr("disabled", false);
+        $.ajax({
+          url: "<%= activities_options_path %>",
+          type: "POST",
+          data: {
+            departamento_id: $(this).val()
+          }
+        });
+
+      }
+
+    });
+  });
+</script> -->

@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: comercios
+#
+#  id         :integer          not null, primary key
+#  nombre     :string(255)
+#  direccion  :string(255)
+#  telefono   :string(255)
+#  latitud    :float(24)
+#  longitud   :float(24)
+#  admin_id   :integer
+#  ciudad_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  direccion: MyString
+  telefono: MyString
+  latitud: 1.5
+  longitud: 1.5
+  admin: one
+  ciudad: one
+
+two:
+  nombre: MyString
+  direccion: MyString
+  telefono: MyString
+  latitud: 1.5
+  longitud: 1.5
+  admin: two
+  ciudad: two

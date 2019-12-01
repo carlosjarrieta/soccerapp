@@ -1,0 +1,52 @@
+<div class="mdl-grid ui-tables">
+
+    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h1 class="mdl-card__title-text">Mis canchas reservadas</h1>
+            </div>
+            <div class="mdl-card__supporting-text no-padding">
+                <table class="mdl-data-table mdl-js-data-table">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">#</th>
+                        <th class="mdl-data-table__cell--non-numeric">FECHA</th>
+                        <th class="mdl-data-table__cell--non-numeric">LUGAR</th>
+                        <th class="mdl-data-table__cell--non-numeric">CIUDAD</th>
+                        <th class="mdl-data-table__cell--non-numeric">CANCHA</th>
+                        <th class="mdl-data-table__cell--non-numeric">HORARIO</th>
+                        <th class="mdl-data-table__cell--non-numeric">ESTADO</th>
+                        <th class="mdl-data-table__cell--non-numeric"> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <% @reservas.each do |reserva| %>
+                        <tr>
+                          <td class="mdl-data-table__cell--non-numeric"><%= reserva.id %></td>
+                          <td class="mdl-data-table__cell--non-numeric"><%= reserva.created_at.strftime('%Y-%m-%d %I:%M:%S') %></td>
+                          <td class="mdl-data-table__cell--non-numeric"><%= reserva.horario_cancha.cancha.comercio %></td>
+                          <td class="mdl-data-table__cell--non-numeric"><%= reserva.horario_cancha.cancha.ciudad %></td>
+                          <td class="mdl-data-table__cell--non-numeric"><%= reserva.horario_cancha.cancha %></td>
+                          <td class="mdl-data-table__cell--non-numeric">
+                            <span class="label label--mini <%= reserva.horario_cancha.horario.color %>">
+                              <%= reserva.horario_cancha.horario.hora %>
+                            </span>
+                          </td>
+                          <td class="mdl-data-table__cell--non-numeric">
+                            <% if reserva.status? == true %>
+                              <span class="label label--mini color--green">RESERVADA</span>
+                              <% else %>
+                                <span class="label label--mini color--red">ANULADA</span>
+                              <% end %>
+                          </td>
+                          <td><%= link_to 'Destroy', users_reserva_path(reserva), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        </tr>
+
+                      <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

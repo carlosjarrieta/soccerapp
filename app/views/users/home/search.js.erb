@@ -1,0 +1,8 @@
+$('body').loadingIndicator();
+var loader = $('body').data("loadingIndicator");
+loader.show()
+$('#canchas_list').html("<%= j (render 'tabla_canchas', collection: @canchas) %>").fadeIn();
+$('#canchas_list').slideDown(350);
+setTimeout(function(){
+  loader.hide()
+}, 500);

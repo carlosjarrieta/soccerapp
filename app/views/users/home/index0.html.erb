@@ -1,0 +1,77 @@
+
+<%= content_for :title do %>
+Canchas de Futball
+<% end %>
+
+
+
+<ul class="mdl-list">
+  <div id="canchas_list">
+    <%= render 'tabla_canchas',  collection: @canchas%>
+  </div>
+
+</ul>
+
+
+<div class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+
+  <!-- <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--9-col-tablet mdl-cell--4-col-phone">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h5 class="mdl-card__title-text text-color--white">CANCHAS DISPONIBLES</h5>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-card__supporting-text">
+          <!-- AQUI COMIENZA LA LISTA -->
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- FILTRO -->
+  <!-- <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h5 class="mdl-card__title-text text-color--white">FILTROS</h5>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <%= form_tag home_path, method: :post, remote: true do |f|%>
+        <div id="projects">
+          <p>Departamento:</p>
+          <%=  collection_select(:departamento, :id, Departamento.order(:name), :id, :name, {:prompt=>true, require: true}, {:class=>'mdl-textfield__input'}) %>
+        </div>
+        <div id="ciudades"></div>
+        <%= submit_tag 'Filtrar', id:'btn_filtrar', class: "mdl-button mdl-js-button mdl-button--raised color--light-blue" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<script type="text/javascript" >
+  $(document).ready(function () {
+    $("#btn_filtrar").attr("disabled", true);
+    var combo = $('#departamento_id');
+
+    combo.on('change', function () {
+
+      if ($(this).val() == '') {
+        $("#btn_filtrar").attr("disabled", true);
+        $("#ciudad_name").hide(350);
+      } else {
+        $("#btn_filtrar").attr("disabled", false);
+        $.ajax({
+          url: "<%= activities_options_path %>",
+          type: "POST",
+          data: {
+            departamento_id: $(this).val()
+          }
+        });
+
+      }
+
+    });
+  });
+</script>

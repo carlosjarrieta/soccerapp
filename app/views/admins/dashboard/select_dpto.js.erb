@@ -1,0 +1,15 @@
+var html = "<%= j(collection_select(:ciudad, :id, @ciudades, :id, :name, {:prompt=>true, require: true}, {:class=>'mdl-textfield__input'})) %>";
+var label_ciudades = '<p>Ciudades:</p>'
+$('#ciudades').html(label_ciudades).append(html).fadeIn(500);
+var cmd_guardar = $("#cmd_guardar");
+cmd_guardar.attr("disabled", true);
+
+
+$('#ciudad_id').on('change', function () {
+  cmd_guardar.attr("disabled", false);
+});
+
+cmd_guardar.click(function() {
+  console.log('tratando de enviar el form')
+  $( "form" ).submit();
+});

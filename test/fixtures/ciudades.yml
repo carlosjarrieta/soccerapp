@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: ciudades
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  departamento_id :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  departamento: one
+
+two:
+  name: MyString
+  departamento: two

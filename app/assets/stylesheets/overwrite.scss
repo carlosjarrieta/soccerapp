@@ -1,0 +1,39 @@
+main {
+  // background: asset_url('Dark_background_1920x1080.png') center top no-repeat;
+  background: asset_url('bg.jpg') center top no-repeat;
+  background-size: cover;
+}
+
+.mdl-checkbox__tick-outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  mask: asset_url('tick-mask.svg?embed');
+  background: 0 0;
+  transition-property: background;
+}
+
+@supports (-webkit-appearance: none) {
+  /* line 1, /home/carrieta/Desarrollo/www/RubyOnRails/soccerapp/app/assets/stylesheets/material.scss */
+  .mdl-progress:not(.mdl-progress--indeterminate):not(.mdl-progress--indeterminate) > .auxbar, .mdl-progress:not(.mdl-progress__indeterminate):not(.mdl-progress__indeterminate) > .auxbar {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(to right, #f44336, #f44336);
+    mask: asset_url('buffer.svg?embed');
+  }
+}
+
+/* line 1, /home/carrieta/Desarrollo/www/RubyOnRails/soccerapp/app/assets/stylesheets/material.scss */
+.mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+  background: asset_url('tick.svg?embed') #f44336;
+}
+
+/* line 1, /home/carrieta/Desarrollo/www/RubyOnRails/soccerapp/app/assets/stylesheets/material.scss */
+.mdl-checkbox.is-checked.is-disabled .mdl-checkbox__tick-outline, fieldset[disabled] .mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+  background: asset_url('tick.svg?embed') rgba(0, 0, 0, 0.26);
+}
+
+
+.mdl-cell {
+    margin: 0;
+}

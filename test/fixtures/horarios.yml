@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: horarios
+#
+#  id         :integer          not null, primary key
+#  hora       :string(10)       not null
+#  tipo       :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  color      :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hora: MyString
+
+two:
+  hora: MyString

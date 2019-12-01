@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  Login - Administrador
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="mdl-layout mdl-js-layout color--gray is-small-screen login">
+  <main class="mdl-layout__content">
+    <div class="mdl-card mdl-card__login mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text color--dark-gray">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone">
+            <span class="mdl-card__title-text text-color--smooth-gray">SOCCER BOARD - ADMINISTRADORES</span>
+          </div>
+          <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone">
+            <span class="login-name text-color--white">LOGIN</span>
+          </div>
+          <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'mdl-textfield__input' %>
+              <%= f.label :email, class: 'mdl-textfield__label' %>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+              <%= f.label :password, class:'mdl-textfield__label' %>
+              <%= f.password_field :password, autocomplete: "current-password", class: 'mdl-textfield__input' %>
+            </div>
+            <%= render "admins/shared/links" %>
+          </div>
+          <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone submit-cell">
+            <div class="mdl-layout-spacer"></div>
+            <a href="index.html">
+              <%= f.submit "LOGIN", class: "mdl-button mdl-js-button mdl-button--raised color--light-blue" %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admins Canchas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins_canchas.each do |admins_cancha| %>
+      <tr>
+        <td><%= link_to 'Show', admins_cancha %></td>
+        <td><%= link_to 'Edit', edit_admins_cancha_path(admins_cancha) %></td>
+        <td><%= link_to 'Destroy', admins_cancha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Cancha', new_admins_cancha_path %>

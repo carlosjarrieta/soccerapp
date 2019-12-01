@@ -1,0 +1,49 @@
+<style>
+
+  .mdl-card{
+    margin-bottom: 20px;
+  }
+.mdl-card__media {
+  margin: 0;
+}
+.mdl-card__media > img {
+  max-width: 100%;
+}
+.mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.mdl-card__actions > .mdl-button--icon {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+
+</style>
+
+<div class="mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title">
+    <h5 class="mdl-card__title-text"><%= link_to cancha.nombre + " - " + cancha.ciudad.name, users_home_path(cancha) %></h5>
+  </div>
+  <figure class="mdl-card__media">
+    <%= image_tag(cancha.foto.url, alt: 'Image', width:'100%') if cancha.foto? %>
+    <%= image_tag('generic.jpg', alt: 'Image', width:'100%') if !cancha.foto? %>
+  </figure>
+
+  <div class="mdl-card__actions mdl-card--border">
+      <h2 class="mdl-card__title-text mdl-color-text--pink-A400">PRECIO:  <%= number_to_currency(cancha.precio) %></h2>
+    <div class="mdl-layout-spacer"></div>
+
+
+
+    <%= link_to users_home_path(cancha), class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored", title:'Reservala aqui!!!' do %>
+      Reservar!
+    <% end %>
+
+
+</div>
+</div>

@@ -1,0 +1,15 @@
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @canchas.each.with_index do |cancha,index| %>
+      <tr>
+      <%= render 'cancha', cancha: cancha %>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>

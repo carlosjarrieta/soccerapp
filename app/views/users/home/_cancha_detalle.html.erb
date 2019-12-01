@@ -1,0 +1,77 @@
+<style>
+  .ui-buttons .mdl-list__item {
+    padding: 1px 16px;
+  }
+
+  .mdl-grid.center-items {
+    justify-content: center;
+  }
+
+
+  .ui-buttons .buttons-basic .mdl-button:not(.mdl-button--icon), .ui-buttons .buttons-icons .mdl-button:not(.mdl-button--icon), .ui-buttons .buttons-social .mdl-button:not(.mdl-button--icon), .ui-buttons .buttons-with-icons .mdl-button:not(.mdl-button--icon) {
+      padding: 0 8px;
+      min-width: 10px;
+  }
+
+  .ui-buttons .mdl-list__item {
+    padding: 1px 4px;
+}
+</style>
+
+<div class="mdl-card mdl-shadow--2dp employer-form" action="#">
+  <figure class="mdl-card__media">
+    <%= image_tag(@cancha.foto.url, alt: 'Image', width:'100%') if @cancha.foto? %>
+    <%= image_tag('generic.jpg', alt: 'Image', width:'100%') if !@cancha.foto? %>
+  </figure>
+
+  <div class="mdl-card__actions mdl-card--border">
+    <h1 class="mdl-card__title-text color-text--red"><%= @cancha.comercio.nombre + " - " + @cancha.nombre %></h1>
+    <div class="mdl-layout-spacer"></div>
+
+    <%= link_to :back, title:'Regresar', class:"mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-js-ripple-effect button--colored-purple" do %>
+    <i class="material-icons">reply</i>
+    <% end %>
+
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#starks-panel" class="mdl-tabs__tab is-active">Horarios</a>
+        <a href="#lannisters-panel" class="mdl-tabs__tab">Descripcion</a>
+        <a href="#targaryens-panel" class="mdl-tabs__tab">Comentarios</a>
+      </div>
+
+      <div class="mdl-tabs__panel is-active" id="starks-panel">
+        <div class="mdl-grid center-items">
+          <div class="mdl-cell mdl-cell--4-col">This div is centered</div>
+        </div>
+        <div class="mdl-grid ui-buttons">
+          <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--3-col-phone buttons-basic">
+            <div id="horario_hm">
+              <%= render 'hm' %>
+            </div>
+            <div id="horario_ht">
+              <%= render 'ht' %>
+            </div>
+            <div id="horario_hn">
+              <%= render 'hn' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-tabs__panel" id="lannisters-panel">
+
+        <p><%= @cancha.descripcion %></p>
+
+      </div>
+      <div class="mdl-tabs__panel" id="targaryens-panel">
+        <ul>
+          <li>Viserys</li>
+          <li>Daenerys</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
