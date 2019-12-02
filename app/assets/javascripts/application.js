@@ -3,6 +3,8 @@
 //= require activestorage
 //= require jquery3
 //= require toastr
+//= require sweetalert2
+//= require sweet-alert2-rails
 
 $(document).ready(function(){
   $(".close-alert").click(function(e){
@@ -23,3 +25,12 @@ if (navigator.serviceWorker) {
       console.log(reg);
     });
 }
+
+
+window.sweetAlertConfirmConfig = {
+  title: 'Are you sure?',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#DD6B55',
+  confirmButtonText: 'Ok',
+};
