@@ -178,7 +178,7 @@
 
                 <div class="avatar-dropdown" id="icon">
                     <span><%= current_admin.name %></span>
-                    <%= image_tag('Icon_header.png') %>
+                      <%= image_tag current_admin.gravatar_url, :class => "gravatar" %>
                 </div>
                 <!-- Account dropdawn-->
                 <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"

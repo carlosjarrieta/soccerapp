@@ -118,6 +118,7 @@ GEM
     ffi (1.11.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gravtastic (3.2.6)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -257,6 +258,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  gravtastic
   jquery-rails
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)

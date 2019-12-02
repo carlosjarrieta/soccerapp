@@ -185,8 +185,7 @@
             <%= link_to 'Login', new_user_session_path, class: "mdl-button mdl-js-button mdl-button--raised color--light-blue" %>
           <% else %>
             <div class="avatar-dropdown" id="icon">
-
-              <%= image_tag('Icon_header.png') %>
+              <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
             </div>
 
           <% end %>
