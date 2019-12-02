@@ -6,7 +6,7 @@ lock '3.10.0'
 
 set :application, 'soccerapp'
 set :scm, :git
-set :repo_url, 'ssh://git@bitbucket.org:22/carlosjarrieta/soccerapp.git'
+set :repo_url, 'ssh://git@github.com:carlosjarrieta/soccerapp.git'
 set :branch, "master"
 set :deploy_via, :copy
 set :user, 'deploy'
