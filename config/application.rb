@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RoutesApp
+module SoccerApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -23,6 +23,8 @@ module RoutesApp
 
     config.i18n.default_locale = :es
     config.i18n.available_locales = [:en, :es]
+
+    config.active_job.queue_adapter = :sidekiq
 
   end
 end

@@ -52,6 +52,8 @@ post 'admins/dashboard/select_dpto', as: 'admin_select_dpto'
     registrations: 'admins/registrations'
   }
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
 
 end
