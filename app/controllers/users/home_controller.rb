@@ -51,11 +51,14 @@ class Users::HomeController < ApplicationController
         horario_cancha.save!
 
         #guardar la reserva en la tabla reservas
-        r = Reserva.new
-        r.user = current_user
-        r.horario_cancha = horario_cancha
-        r.status = true
-        r.save
+        @reserva = Reserva.new
+        @reserva.user = current_user
+        @reserva.horario_cancha = horario_cancha
+        @reserva.status = true
+        @reserva.save
+
+        @cancha = horario_cancha.cancha
+        @horario = horario_cancha
 
       end
     end

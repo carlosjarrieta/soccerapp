@@ -1,4 +1,5 @@
 var hm = "<%= j( render 'hm') %>";
+
 $('#horario_hm').html(hm).fadeIn(500);
 
 var ht = "<%= j( render 'ht') %>";
@@ -7,5 +8,14 @@ $('#horario_ht').html(ht).fadeIn(500);
 var hn = "<%= j( render 'hn') %>";
 $('#horario_hn').html(hn).fadeIn(500);
 
+var cancha = '<%= @cancha.nombre %>'
+var hora = '<%= @horario.horario.hora %>'
+
+var msg = "Reservaste la cancha: " + cancha + " en el horario: " + hora + "\n";
+msg = msg + "Por valor de $ " + '<%= @cancha.precio %>' + "\n";
+msg = msg + "<p>RECUERDA ESTAR 15 MINUTO ANTES!</p>"
+
+
+
 // toastr.success('Cancha reservada correctamente!', 'Éxito')
-swal("Good!", "Tu cancha ha dido reservada!", "success");
+swal("Good!", msg, "success");
