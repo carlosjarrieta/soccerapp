@@ -7,7 +7,7 @@ class Admins::CanchasController < ApplicationController
 
   # GET /admins/canchas
   def index
-    @canchas = Admins::Cancha.all
+    # @canchas = Admins::Cancha.all
   end
 
   # GET /admins/canchas/1
@@ -59,6 +59,20 @@ class Admins::CanchasController < ApplicationController
   def destroy
     @cancha.destroy
     redirect_to admin_path, notice: 'Cancha eliminada correctamente!'
+  end
+
+
+  # Metodo para generar los horarios de las canchas
+  def generar_horarios
+    # verificar si los horarios ya estan generados
+        date_at = Time.zone.now.strftime("%Y-%m-%d")
+        horarios = HorarioCancha.where("created_at >= ?", date_at)
+        if horarios.count() > 1
+            redirect_to admin_path, alert: 'Los horarios ya han sido generados!'
+            return
+        end
+        CreateHorariosJob.perform_later
+        redirect_to admin_path, notice: 'Se generaron los horarios de todas las canchas'
   end
 
   private

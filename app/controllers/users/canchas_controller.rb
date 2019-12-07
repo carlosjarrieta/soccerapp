@@ -29,7 +29,7 @@ class Users::CanchasController < ApplicationController
     end
 
 
-    def buscar_horarios
+    def buscar_horariosq
       @horario_manana = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 1')
       @horario_tarde = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 2')
       @horario_noche = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 3')

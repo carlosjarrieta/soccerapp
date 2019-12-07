@@ -37,6 +37,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm', github: 'capistrano/rvm'
   gem 'capistrano-ssh-doctor'
+  gem 'capistrano-sidekiq'
 end
 
 group :development, :test do

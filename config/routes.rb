@@ -15,6 +15,7 @@ get '/manifest.json' => "service_worker#manifest"
 scope module: 'admins' do
   # get 'admins/dashboard', as: 'dashboard'
   resources :canchas
+
   resources :comercios do
       resources :canchas
   end
@@ -23,6 +24,7 @@ end
 
 get '/admin/' => 'admins/dashboard#home', as: 'admin'
 post 'admins/dashboard/select_dpto', as: 'admin_select_dpto'
+get 'admins/canchas/generar_horarios', as: 'admin_generar_horarios'
 
 
 

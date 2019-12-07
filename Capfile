@@ -8,6 +8,7 @@ require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/ssh_doctor'
+require 'capistrano/sidekiq'
 
 set :rvm_type, :user
 set :rvm_ruby_version, '2.3.3'

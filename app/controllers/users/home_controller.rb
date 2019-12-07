@@ -69,9 +69,13 @@ class Users::HomeController < ApplicationController
 
 
     def set_horarios
+        date_at = Time.zone.now.strftime("%Y-%m-%d")
       @horario_manana = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 1')
+      .where("horario_canchas.created_at >= ?", date_at)
       @horario_tarde = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 2')
+      .where("horario_canchas.created_at >= ?", date_at)
       @horario_noche = HorarioCancha.joins(:horario).select('horario_canchas.*,horarios.hora').where(cancha_id: @cancha.id).where('tipo = 3')
+      .where("horario_canchas.created_at >= ?", date_at)
     end
 
     # Only allow a trusted parameter "white list" through.

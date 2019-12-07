@@ -16,8 +16,9 @@ set :deploy_to, '/home/deploy/www/soccerapp'
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
-
-
+set :sidekiq_role, :app
+set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
+set :sidekiq_env, 'production' 
 
 namespace :deploy do
       desc 'Restart application'
