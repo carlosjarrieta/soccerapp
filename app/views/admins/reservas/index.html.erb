@@ -1,0 +1,54 @@
+<div class="mdl-grid mdl-cell mdl-cell--8-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+
+  <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone ">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Reservas</h2>
+      </div>
+
+
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">#</th>
+            <th class="mdl-data-table__cell--non-numeric">FECHA</th>
+            <th class="mdl-data-table__cell--non-numeric">CANCHA</th>
+            <th class="mdl-data-table__cell--non-numeric">PRECIO</th>
+            <th class="mdl-data-table__cell--non-numeric">HORARIO</th>
+            <th class="mdl-data-table__cell--non-numeric">ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reservas.each.with_index do |reserva,index| %>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= index + 1 %></td>
+            <td class="mdl-data-table__cell--non-numeric"><%= reserva.created_at.strftime('%Y-%m-%d') %></td>
+            <td class="mdl-data-table__cell--non-numeric"><%= reserva.horario_cancha.cancha.nombre %></td>
+            <td class="mdl-data-table__cell--non-numeric"><%= number_to_currency(reserva.horario_cancha.cancha.precio) %></td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <span class="label label--mini <%= reserva.horario_cancha.horario.color %>">
+                <%= reserva.horario_cancha.horario.hora %>
+              </span>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <% if reserva.status? == true %>
+              <span class="label label--mini color--green">RESERVADA</span>
+              <% else %>
+              <span class="label label--mini color--red">ANULADA</span>
+              <% end %>
+            </td>
+
+          </tr>
+
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td colspan="0"> <h6 class="text-danger">TOTAL RECAUDADO: <%=  number_to_currency(@suma) %> </h6></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>

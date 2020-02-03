@@ -4,31 +4,32 @@ Rails.application.routes.draw do
   root 'users/home#index'
 
   # Service Worker Routes
-get '/service-worker.js' => "service_worker#service_worker"
-get '/manifest.json' => "service_worker#manifest"
+  get '/service-worker.js' => "service_worker#service_worker"
+  get '/manifest.json' => "service_worker#manifest"
 
 
 
 
   #RUTAS PARA LOS ADMINISTRADORES
 
-scope module: 'admins' do
-  # get 'admins/dashboard', as: 'dashboard'
-  resources :canchas
+  scope module: 'admins' do
+    # get 'admins/dashboard', as: 'dashboard'
+    resources :canchas
 
-  resources :comercios do
+    resources :comercios do
       resources :canchas
+    end
+
   end
 
-end
-
-get '/admin/' => 'admins/dashboard#home', as: 'admin'
-post 'admins/dashboard/select_dpto', as: 'admin_select_dpto'
-get 'admins/canchas/generar_horarios', as: 'admin_generar_horarios'
-
+  get '/admin/' => 'admins/dashboard#home', as: 'admin'
+  get '/admin/reservas' => 'admins/reservas#index', as: 'reservas'
+  post 'admins/dashboard/select_dpto', as: 'admin_select_dpto'
+  get 'admins/canchas/generar_horarios', as: "admin_generar_horarios"
 
 
-#ruta para los usuarios
+
+  #ruta para los usuarios
   namespace :users do
     resources :home do
     end
@@ -43,7 +44,7 @@ get 'admins/canchas/generar_horarios', as: 'admin_generar_horarios'
   get '/users/acount' => 'users/home#acount', as: 'acount'
 
 
-#RUTAS DE DEVISE
+  #RUTAS DE DEVISE
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
