@@ -5,12 +5,14 @@
 //= require toastr
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require jquery-ui/widgets/datepicker
 
 $(document).ready(function(){
-  $(".close-alert").click(function(e){
-    $(this).parent().remove();
-    e.preventDefault();
-  });
+    $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+    $(".close-alert").click(function(e){
+      $(this).parent().remove();
+      e.preventDefault();
+    });
 
   setTimeout(function(){
     $(".alert").hide()

@@ -230,18 +230,21 @@
               </span>
             </li>
           <% end %>
+
+            <%= link_to new_admin_session_path do %>
+            <li class="mdl-menu__item mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon text-color--primary">exit_to_app</i>
+                Administrador
+              </span>
+            </li>
+          <% end %>
         </ul>
 
         <button id="more" class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">more_vert</i>
         </button>
 
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp settings-dropdown" for="more">
-          <li class="mdl-menu__item">
-            <%= link_to "Administrador", new_admin_session_path %>
-          </li>
-
-        </ul>
       </div>
     </header>
 

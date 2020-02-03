@@ -1,0 +1,22 @@
+<div class="form-group mb-2">
+  <input type="text" readonly class="form-control-plaintext" value="Fecha Inicial:">
+</div>
+<div class="form-group mx-sm-3 mb-2">
+  <%= text_field_tag :start_at, params[:start_at],
+    class: "form-control datepicker",
+    :value => Time.zone.now.strftime('%Y-%m-%d'),
+    placeholder: "AAAA-MM-DD"
+  %>
+</div>
+<div class="form-group mb-2">
+  <input type="text" readonly class="form-control-plaintext" value="Fecha Final:">
+</div>
+<div class="form-group mx-sm-3 mb-2">
+  <%= text_field_tag :end_at, params[:end_at],
+  class: "form-control datepicker",
+  :value => Time.zone.now.strftime('%Y-%m-%d'),
+  placeholder: "AAAA-MM-DD"
+  %>
+</div>
+
+

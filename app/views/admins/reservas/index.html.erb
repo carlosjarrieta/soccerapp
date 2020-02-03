@@ -7,6 +7,41 @@
       </div>
 
 
+
+
+      <%= form_tag (reservas_path), {class:'form', method: :get} do %>
+      <div class="form__article">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <%= text_field_tag :start_at, params[:start_at],
+            class: "mdl-textfield__input datepicker",
+            :value => Time.zone.now.strftime('%Y-%m-%d'),
+            placeholder: "AAAA-MM-DD"
+            %>
+            <label class="mdl-textfield__label" for="start_at">Fecha Inicial</label>
+
+          </div>
+
+          <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <%= text_field_tag :end_at, params[:end_at],
+            class: "mdl-textfield__input datepicker",
+            :value => Time.zone.now.strftime('%Y-%m-%d'),
+            placeholder: "AAAA-MM-DD"
+            %>
+            <label class="mdl-textfield__label" for="end_at">Fecha Final</label>
+          </div>
+
+        </div>
+        <div class="form__action">
+            <button id="submit_button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Buscar
+            </button>
+        </div>
+      </div>
+
+      <% end %>
+
+
       <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
