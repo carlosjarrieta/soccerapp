@@ -15,8 +15,8 @@
 class Cancha < ApplicationRecord
   belongs_to :comercio
   belongs_to :ciudad
-
-  has_many :horario_canchas
+  
+  has_many :horario_canchas, dependent: :destroy
   has_many :horarios, through: :horario_canchas
 
   validates :nombre, :precio, :comercio_id, :ciudad_id, :descripcion, :foto,   presence: true

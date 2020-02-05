@@ -21,11 +21,11 @@ class Horario < ApplicationRecord
     scope :manana, -> {where(tipo: 1 )}
     scope :tarde, -> {where(tipo: 2 )}
     scope :noche, -> {where(tipo: 3 )}
-  
+
 
 
     #relaciones
-     has_many :horario_canchas
+     has_many :horario_canchas, dependent: :destroy
      has_many :canchas, through: :horario_canchas
 
 end

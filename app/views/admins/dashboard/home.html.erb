@@ -13,53 +13,44 @@
           <% end %>
         </div>
         <table class="mdl-data-table mdl-js-data-table">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">#</th>
-              <th class="mdl-data-table__cell--non-numeric">NOMBRE</th>
-              <th class="mdl-data-table__cell--non-numeric">CIUDAD</th>
-              <th class="mdl-data-table__cell--non-numeric">CANCHAS</th>
-              <th class="mdl-data-table__cell--non-numeric"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @comercios.each.with_index do |comercio, index| %>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">
-                <%= index + 1 %>
-              </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <%= comercio.nombre %>
-              </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <%= comercio.ciudad.name %>
-              </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <span class="label label--mini mdl-color--orange-400 mdl-color-text--black">
-                  <%= contar_canchas(comercio) %>
-                </span>
-              </td>
-              <td>
-                <%= link_to edit_comercio_path(comercio), {title:'Editar Comercio',class:"mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect button--colored-teal"} do %>
-                <i class="material-icons">create</i>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to new_cancha_path(:comercio_id => comercio.id),
-                title: 'Agregar cancha',
-                class:"mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect button--colored-teal" do %>
-                <i class="material-icons">fiber_new</i>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to  comercio, method: :delete, data: { confirm: 'Estas seguro?' }, title:'Eliminar Comercio' do %>
-                <i class="material-icons">delete</i>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">#</th>
+                <th class="mdl-data-table__cell--non-numeric">NOMBRE</th>
+                <th class="mdl-data-table__cell--non-numeric">COMERCIO</th>
+                <th class="mdl-data-table__cell--non-numeric">DIRECCION</th>
+                <th class="mdl-data-table__cell--non-numeric">CIUDAD</th>
+                <th class="mdl-data-table__cell--non-numeric">PRECIO</th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @canchas.each.with_index do |cancha,index| %>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric"><%= index + 1 %></td>
+                  <td class="mdl-data-table__cell--non-numeric"><%= cancha.nombre %></td>
+                  <td class="mdl-data-table__cell--non-numeric"><%= cancha.comercio %></td>
+                  <td class="mdl-data-table__cell--non-numeric"><%= cancha.comercio.direccion %></td>
+                  <td class="mdl-data-table__cell--non-numeric"><%= cancha.ciudad %></td>
+                  <td class="mdl-data-table__cell--non-numeric"><%= number_to_currency(cancha.precio) %></td>
+
+                  <td>
+                    <%= link_to edit_cancha_path(cancha), title:'Editar Cancha' do %>
+                      <i class="material-icons">create</i>
+                    <% end %>
+
+                  </td>
+
+                  <td>
+                    <%= link_to  cancha, method: :delete, data: { confirm: 'Estas seguro?' }, title:'Eliminar Cancha' do %>
+                      <i class="material-icons">delete</i>
+                    <% end %>
+                  </td>
+                </tr>
+
+              <% end %>
+            </tbody>
+          </table>
 
       </div>
     </div>
@@ -72,7 +63,7 @@
         <h1 class="mdl-card__title-text">Mis Comercios</h1>
       </div>
       <div class="mdl-card__supporting-text no-padding">
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp projects-table">
+        <table class="mdl-data-table mdl-js-data-table">
           <thead>
             <tr>
               <th class="mdl-data-table__cell--non-numeric">#</th>

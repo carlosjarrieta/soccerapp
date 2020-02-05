@@ -25,7 +25,7 @@
   </figure>
 
   <div class="mdl-card__actions mdl-card--border">
-    <h1 class="mdl-card__title-text color-text--red"><%= @cancha.comercio.nombre + " - " + @cancha.nombre %></h1>
+    <h5 class="mdl-card__title-text color-text--red"><%= @cancha.nombre %></h5>
     <div class="mdl-layout-spacer"></div>
 
     <%= link_to :back, title:'Regresar', class:"mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-js-ripple-effect button--colored-purple" do %>
@@ -37,18 +37,18 @@
 
     <div class="mdl-layout-spacer"></div>
     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-      <div class="mdl-tabs__tab-bar">
-        <a href="#starks-panel" class="mdl-tabs__tab is-active">Horarios</a>
-        <a href="#lannisters-panel" class="mdl-tabs__tab">Descripcion</a>
-        <a href="#targaryens-panel" class="mdl-tabs__tab">Comentarios</a>
-      </div>
 
-      <div class="mdl-tabs__panel is-active" id="starks-panel">
+
+
         <div class="mdl-grid center-items">
-          <div class="mdl-cell mdl-cell--4-col">This div is centered</div>
+          <div class="mdl-cell mdl-cell--4-col">
+              <p color-text--orange><%= @cancha.descripcion %></p>
+          </div>
+
         </div>
         <div class="mdl-grid ui-buttons">
           <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--3-col-phone buttons-basic">
+              <h3 class="mdl-card__title-text color-text--red">Horarios</h3>
             <div id="horario_hm">
               <%= render 'hm' %>
             </div>
@@ -59,18 +59,6 @@
               <%= render 'hn' %>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="mdl-tabs__panel" id="lannisters-panel">
-
-        <p><%= @cancha.descripcion %></p>
-
-      </div>
-      <div class="mdl-tabs__panel" id="targaryens-panel">
-        <ul>
-          <li>Viserys</li>
-          <li>Daenerys</li>
-        </ul>
       </div>
     </div>
   </div>

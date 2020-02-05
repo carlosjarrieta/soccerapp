@@ -14,6 +14,7 @@
 class HorarioCancha < ApplicationRecord
   belongs_to :cancha
   belongs_to :horario
+  has_many :reservas, dependent: :destroy
 
   scope :disponible, -> {where(reservado: false )}
   scope :reservado, -> {where(reservado: true )}

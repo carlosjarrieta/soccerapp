@@ -22,11 +22,13 @@
       <h3>Datos Básicos</h3>
 
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :nombre, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="cancha_nombre">Nombre:</label>
         </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      </div>
+        <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.number_field :precio, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="cancha_direccion">Precio:</label>
         </div>
@@ -37,9 +39,12 @@
           <%= form.text_field :ciudad, class: "mdl-textfield__input", readonly: true %>
           <label class="mdl-textfield__label" for="cancha_nombre">Ciudad:</label>
         </div>
-        <div>
-           <%= form.label :foto %>
+      </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+               <%= form.label :foto %><br>
            <%= form.file_field :foto %>
+        </div>
         </div>
       </div>
 
