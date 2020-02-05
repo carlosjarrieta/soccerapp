@@ -20,42 +20,45 @@
       <h3>Datos Básicos</h3>
 
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :nombre, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="comercio_nombre">Nombre:</label>
         </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    </div>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :direccion, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="comercio_direccion">Direccion:</label>
         </div>
       </div>
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :telefono, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="comercio_telefono">Telefono:</label>
         </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        </div>
+          <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :latitud, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="comercio_latitud">latitud:</label>
         </div>
       </div>
       <div class="mdl-grid">
-
-        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <%= form.text_field :longitud, class: "mdl-textfield__input", required: true %>
           <label class="mdl-textfield__label" for="comercio_longitud">Longitud:</label>
         </div>
       </div>
 
       <div class="mdl-grid">
-
-
         <%= form_tag admin_select_dpto_path, method: :post, remote: true  do |f|%>
         <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <p>Departamento:</p>
           <%=  collection_select(:departamento, :id, Departamento.order(:name), :id, :name, {:prompt=>true, require: true}, {:class=>'mdl-textfield__input'}) %>
         </div>
+</div>
 
+  <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <div id="ciudades">
 
