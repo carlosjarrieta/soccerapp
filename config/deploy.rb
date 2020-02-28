@@ -6,27 +6,27 @@ lock '3.10.0'
 
 set :application, 'soccerapp'
 set :scm, :git
-set :repo_url, 'ssh://git@github.com:22/carlosjarrieta/soccerapp.git'
+set :repo_url, 'ssh://git@bitbucket.org:22/carlosjarrieta/domicentro.git'
 set :branch, "master"
 set :deploy_via, :copy
 set :user, 'deploy'
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/deploy/www/soccerapp'
+set :deploy_to, '/home/deploy/www/domicentro'
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 set :sidekiq_role, :app
-set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
-set :sidekiq_env, 'production' 
+#set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
+#set :sidekiq_env, 'production' 
 
 namespace :deploy do
-  desc 'Restart application'
+      desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
-    end
   end
+end
 
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
@@ -41,15 +41,16 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
-end
 
-after :publishing, :restart
 
-after :restart, :clear_cache do
-  on roles(:web), in: :groups, limit: 3, wait: 10 do
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+    end
   end
 end
