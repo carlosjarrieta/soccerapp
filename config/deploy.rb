@@ -21,12 +21,12 @@ set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
 set :sidekiq_env, 'production' 
 
 namespace :deploy do
-      desc 'Restart application'
+  desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
+    end
   end
-end
 
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
@@ -41,19 +41,15 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
+end
 
+after :publishing, :restart
 
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+after :restart, :clear_cache do
+  on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-    end
   end
-
-
-
 end
